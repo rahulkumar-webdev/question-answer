@@ -1,25 +1,5 @@
 
 
-const que = "https://opentdb.com/api.php?amount=10";
-
-async function link() {
-  try {
-    const response = await axios.get(que);
-    const results = response.data.results;
-
-    const randomIndex = Math.floor(Math.random() * results.length);
-    const question = results[randomIndex].question;
-    const answer = results[randomIndex].correct_answer;
-
-    return {
-      question,
-      answer
-    };
-  } catch (error) {
-    console.error("Error fetching trivia:", error);
-  }
-}
-
 // let que = "https://opentdb.com/api.php?amount=10";
 
 // let ran_name = "https://random-word-api.herokuapp.com/word"

@@ -1,5 +1,5 @@
 
-
+csjdkdkd
 // let que = "https://opentdb.com/api.php?amount=10";
 
 // let ran_name = "https://random-word-api.herokuapp.com/word"

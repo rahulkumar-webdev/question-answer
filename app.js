@@ -5,99 +5,88 @@
 // let ran_name = "https://random-word-api.herokuapp.com/word"
 
 
+let link = 
+{question : 'how is the pesident of india', answer:'narendr modi'
+};
 
+let rand_name = ["rahul","rohan","krishna","balram","sudams","radha"];
+let ans_wer = document.querySelector(".answer");
+    let lav = document.querySelector("#lavel");
 
-
-
+let btns = ["one","two","three","four"];
 let started = true;
 let money = 0;
+let level = 1;
 
-document.addEventListener("keypress",()=>{
+document.addEventListener("dblclick",()=>{
   if(started = true){
     started = false;
-addingname();
-matching();
-finalcheck();
-// currectness(matching());
+    ans_wer.innerText = "";
+    lav.innerHTML = "level<br>",0;
+    generate_question();
+    f_btns();
   }
   
 })
-
-
-
-
-
-
-
-function addingname(){
-  let questi = document.querySelector(".questions")
-  questi.innerText = question();
-
-  let  one = document.querySelector("#one");
-  let two = document.querySelector("#two");
-  let three = document.querySelector("#three");
-  let four = document.querySelector("#four");
-one.innerText=   option();
-two.innerText=   option();
-three.innerText= option();
-four.innerText=  option();
-}
-function option(){
-let NAME = ["rahul","kumer","krishna","sudama","rama","lakshman","sita","radarani","hunuman",'sunker ji',"hari","gopala","makhan chore"];
-let random = Math.floor(Math.random()*11)+0;
-let ran_name = NAME[random];
-return ran_name;
-}
-
-function question(){
-  let bat = ["koin he vo jo duniya ko banna he ","sita ji kiski patini he hamare ramayan me"];
-let ind = Math.floor(Math.random()*2)+0;
-let que = bat[ind];
-val_sita(ind);
-return que
-}
-
-
-
-
-
-function val_sita(index){
-if(index == 0){
-  console.log("krishna");
-  return "krishna";
-}else{
-console.log("rama");
-return "rama";
-}
-}
-
-
-
-
-
-
-
-
-
-function finalcheck(){
-if(matching() == val_sita()){
-  console.log("yes chhosed correct");
+function generate_question() {
+  let que = document.querySelector(".questions");
+  que.innerText = "";
+  que.innerText = link.question;
   
-}else{
-  console.log("wrong option");
-  
-}
+  let ans = link.answer;
+  let ran = random();
+  let random_ind = btns[ran];
+  asscessing(random_ind,ans);
 }
 
-function matching(){
-let btns = document.querySelectorAll(".options-container button");
-for(let btn of btns){
+function asscessing(ind,ans) {
+  let btn = document.querySelector(`#${ind}`);
+  btn.innerText = ans;
   btn.addEventListener("click",()=>{
- let curr_opt = btn.innerText;
-console.log(curr_opt);
-return curr_opt;
+    btn.style.background="green"
+
+    lav.innerText= level++;
   })
   
 }
-
+function threed_part(btn1,btn2,btn3,btn4) {
+  maching(btn1);
+  maching(btn2);
+  maching(btn3);
+  maching(btn4);
 }
+
+// maching
+function maching(btn_n) {
+     if (btn_n.innerText !== link.answer) {
+     btn_n.innerText = rand_name[random()];
+     btn_n.addEventListener("click", () => {
+  btn_n.style.background = "red";
+lav.innerHTML= "level<br>",0;
+  wrong_t_a_b_fun();
+  
+})
+   }
+   
+}
+
+//basic function 
+function wrong_t_a_b_fun() {
+  ans_wer.innerText= link.answer;
+  ans_wer.style.color = "green";
+}
+function f_btns() {
+  let one = document.querySelector(`#one`);
+  let two = document.querySelector(`#two`);
+  let three = document.querySelector(`#three`);
+  let four = document.querySelector(`#four`);
+threed_part(one,two,three,four)
+}
+
+
+function random() {
+  let ran = Math.floor(Math.random()*4);
+  return ran;
+}
+
+
